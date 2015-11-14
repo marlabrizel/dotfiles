@@ -107,6 +107,11 @@ alias las='ls -lAS'
 alias hi='history | tail -50'
 alias be='bundle exec'
 alias ..="cd ../"
+alias gs='git status'
+alias gc='git commit'
+alias ga='git add'
+alias ugh='git reset --hard'
+alias yolo='bundle exec rake db:drop db:setup'
 
 
 # Completions
