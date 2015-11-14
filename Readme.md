@@ -1,5 +1,5 @@
 Endless thank yous to my friends at [Ello](http://ello.co) and [Mode
-Set](http://modeset.com/) for the basic configs. I've layered a few of my own on
+Set](http://modeset.com/) for the not-so-basic configs. I've layered a few of my own on
 top of this. See below for an overview of the magic...
 
 ![ello](http://d324imu86q1bqn.cloudfront.net/uploads/user/avatar/641/large_Ello.1000x1000.png
