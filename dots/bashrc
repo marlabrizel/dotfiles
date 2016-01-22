@@ -135,3 +135,13 @@ fi
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+#aws credentials
+function setawscreds() {
+  if [ $# -ne 0 ]; then
+    export AWS_ACCESS_KEY_ID=`grep -A3 $@ ~/.aws/credentials | grep aws_access_key_id | awk '{print $3}'`
+    export AWS_SECRET_ACCESS_KEY=`grep -A3 $@ ~/.aws/credentials | grep aws_secret_access_key | awk '{print $3}'`
+    unset AWS_SECURITY_TOKEN
+  fi
+}
+setawscreds default
