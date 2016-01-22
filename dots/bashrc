@@ -115,6 +115,7 @@ alias ga='git add'
 alias ugh='git reset --hard'
 alias gra='git remote add'
 alias yolo='bundle exec rake db:drop db:setup'
+alias owssh='ssh -i ~/.ssh/OW-Ops.pem'
 
 
 # Completions
