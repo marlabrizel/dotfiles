@@ -71,6 +71,8 @@ export CLICOLOR=1
 #      LSCOLORS=0102030405060708091011
 export LSCOLORS=excxgxfxbxdxbxbxbxexex
 
+source ~/.git-prompt.sh
+
 parse_git_branch() {
   __git_ps1 " [%s]"
 }
