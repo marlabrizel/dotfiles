@@ -140,6 +140,10 @@ fi
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
+# support for golang
+export PATH=$PATH:/usr/local/go/bin
+export GO15VENDOREXPERIMENT=1
+
 #aws credentials
 function setawscreds() {
   if [ $# -ne 0 ]; then
