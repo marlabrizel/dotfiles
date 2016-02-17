@@ -2,3 +2,5 @@ if [[ -f $HOME/.bashrc ]]; then source $HOME/.bashrc; fi
 if [[ -f $HOME/.bashrc.local ]]; then source $HOME/.bashrc.local; fi
 export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
 export GOPATH=~/code/workspace
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN
