@@ -119,6 +119,7 @@ alias gra='git remote add'
 
 alias yolo='bundle exec rake db:drop db:setup'
 alias owssh='ssh -i ~/.ssh/OW-Ops.pem'
+alias mongod='mongod --dbpath /users/marlabrizel/mongo/data/db'
 
 
 # Completions
