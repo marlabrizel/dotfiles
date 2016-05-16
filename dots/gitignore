@@ -1,5 +1,6 @@
 .DS_Store
 .idea
+*.iml
 .svn
 *.swp
 .sass-cache
@@ -13,5 +14,4 @@ tmp/*
 log/*
 .powenv
 .env
-
 
