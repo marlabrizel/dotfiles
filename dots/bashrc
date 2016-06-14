@@ -138,6 +138,9 @@ if [[ "$-" == *"i"* ]]; then
   echo -e "\033[0;35m------------------------------------------\033[0m"
 fi
 
+# Democracy Works
+# -----------------------------------------
+alias dwssh='ssh -i ~/.ssh/devs.pem'
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
