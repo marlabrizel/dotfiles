@@ -14,4 +14,4 @@ tmp/*
 log/*
 .powenv
 .env
-
+.hgignore
