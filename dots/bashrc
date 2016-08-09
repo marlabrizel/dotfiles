@@ -144,6 +144,7 @@ alias dwssh='ssh -i ~/.ssh/devs.pem'
 alias import_states='lein run -m election-authority-works.import "{:host \"localdocker\" :port 45672}" ../resources/election_authorities_states.csv'
 alias import_authorities='lein run -m election-authority-works.import "{:host \"localdocker\" :port 45672}" ../resources/election_authorities_authorities.csv'
 alias import_sample_election='lein run -m election-works.import "{:host \"localdocker\" :port 45672}" ../resources/sample_election_import.csv'
+alias setfleet='export FLEETCTL_TUNNEL=10.36.116.233'
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
