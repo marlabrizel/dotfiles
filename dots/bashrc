@@ -111,6 +111,7 @@ alias be='bundle exec'
 alias lf='lein figwheel'
 alias lr='lein repl'
 alias ..="cd ../"
+alias dc='docker-compose'
 
 alias git-prune='git remote | xargs -n1 git remote prune'
 alias gs='git status'
