@@ -109,6 +109,7 @@ alias las='ls -lAS'
 alias hi='history | tail -50'
 alias be='bundle exec'
 alias lf='lein figwheel'
+alias rlf='rlwrap lein figwheel'
 alias lr='lein repl'
 alias ..="cd ../"
 alias dc='docker-compose'
