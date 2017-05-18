@@ -192,6 +192,12 @@ if has("autocmd")
   augroup END
 endif
 
+" Functions
+" -----------------------------------------------------------------------------
+function! Figgieback()
+  execute "Piggieback (do (require '[figwheel-sidecar.repl-api]) (figwheel-sidecar.repl-api/repl-env))"
+endfunction
+
 " Theme
 " -----------------------------------------------------------------------------
 set background=dark
