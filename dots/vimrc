@@ -116,6 +116,8 @@ let g:coffee_compile_vert=1
 let g:airline#extensions#tabline#enabled=0
 
 
+let g:clojure_align_multiline_strings=1
+
 " Key mapping
 " -----------------------------------------------------------------------------
 " RSI reduction
