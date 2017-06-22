@@ -113,6 +113,8 @@ let g:indexed_search_show_index_mappings=0
 let g:indexed_search_colors=0
 let g:coffee_compile_vert=1
 
+let g:airline#extensions#tabline#enabled=0
+
 
 " Key mapping
 " -----------------------------------------------------------------------------
