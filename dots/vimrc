@@ -80,7 +80,7 @@ runtime! macros/matchit.vim
 
 
 if executable('ag')
-  let g:agprg='ag --nogroup --column'
+  let g:ag_prg='ag --nogroup --column'
   set grepprg=ag\ --nogroup\ --nocolor
   let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore vendor/bundle -g ""'
   let g:ctrlp_use_caching = 0
