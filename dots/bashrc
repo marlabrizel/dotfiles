@@ -193,16 +193,6 @@ if [[ "$-" == *"i"* ]]; then
   echo -e "\033[0;35m------------------------------------------\033[0m"
 fi
 
-# Democracy Works
-# -----------------------------------------
-alias dwssh='ssh -i ~/.ssh/devs.pem'
-alias import_states='lein run -m election-authority-works.import "{:host \"localdocker\" :port 45672}" ../resources/election_authorities_states.csv'
-alias import_authorities='lein run -m election-authority-works.import "{:host \"localdocker\" :port 45672}" ../resources/election_authorities_authorities.csv'
-alias import_sample_election='lein run -m election-works.import "{:host \"localdocker\" :port 45672}" ../resources/sample_election_import.csv'
-alias setfleet='export FLEETCTL_TUNNEL=10.36.116.233'
-alias dc-rebuild-restart='function _rebuild-restart-container(){ dc stop $1; dc rm -f $1; dc build $1; dc create $1; dc start $1; }; _rebuild-restart-container'
-alias krak='./krak'
-
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
