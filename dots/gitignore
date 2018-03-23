@@ -16,3 +16,4 @@ log/*
 .env
 .hgignore
 .ruby-version
+*.rdb
