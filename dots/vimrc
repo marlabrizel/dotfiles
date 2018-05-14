@@ -101,10 +101,11 @@ let g:SuperTabLongestEnhanced=1
 let g:SuperTabLongestHighlight=1
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
-let g:syntastic_auto_loc_list=1
-let g:syntastic_mode_map={'mode': 'active','passive_filetypes': ['scss', 'sass']}
-let g:syntastic_html_tidy_inline_tags=['svg', 'path', 'circle']
-let g:syntastic_html_tidy_ignore_errors = ["<title> isn't allowed", ' before <title>']
+let g:ale_fixers = {'javascript': ['eslint']}
+let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_fix_on_save = 1
+
+let g:javascript_plugin_flow=1
 
 let g:yankring_window_height=10
 let g:yankring_history_dir=$HOME.'/.vim/tmp/yankring/'
