@@ -81,12 +81,16 @@ parse_ruby_version() {
   echo " [$(rbenv version-name)]"
 }
 
+parse_node_version() {
+  echo "[$(nodenv version-name)]"
+}
+
 settitle() {
   echo -n -e "\033]0;$*\007"
 }
 
 export GIT_PS1_SHOWDIRTYSTATE='true'
-export PS1="\[\033[35m\][\h\[\033[00m\]\[\033[35m\]] \[\033[34m\]\W\[\033[32m\]\$(parse_ruby_version)\[\033[31m\]\$(parse_git_branch)\[\033[00m\] \[\033[0m\]"
+export PS1="\[\033[35m\][\h\[\033[00m\]\[\033[35m\]] \[\033[34m\]\W\[\033[32m\]\$(parse_ruby_version)|$(parse_node_version)\[\033[31m\]\$(parse_git_branch)\[\033[00m\] \[\033[0m\]"
 export PS2="\[\033[35m\]→ \[\033[0m\]"
 
 
@@ -211,3 +215,4 @@ export PATH=$PATH:/usr/local/opt/go/libexec/bin
 #   fi
 # }
 # setawscreds default
+eval "$(nodenv init -)"
