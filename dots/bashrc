@@ -1,5 +1,3 @@
-eval "$(rbenv init -)"
-
 # Environment pathing and editor defaults
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/heroku/bin:$PATH"
 export ARCHFLAGS="-arch i386 -arch x86_64"
@@ -215,4 +213,5 @@ export PATH=$PATH:/usr/local/opt/go/libexec/bin
 #   fi
 # }
 # setawscreds default
+eval "$(rbenv init -)"
 eval "$(nodenv init -)"
