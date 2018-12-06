@@ -101,14 +101,16 @@ let g:SuperTabLongestEnhanced=1
 let g:SuperTabLongestHighlight=1
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
-let g:ale_fixers = {'javascript': ['eslint']}
-let g:ale_fixers['javascript'] = ['prettier']
+let g:ale_linters = {'javascript': ['eslint', 'flow']}
+let g:ale_fixers = {'javascript': ['prettier']}
 let g:ale_fix_on_save = 1
 let g:ale_history_log_output=0
+" let g:ale_open_list='on_save'
 let g:ale_sign_error='☠️'
 let g:ale_sign_warning='⚠️'
 let g:ale_echo_delay=666
 let g:ale_lint_delay=666
+" let g:ale_keep_list_window_open = 0
 let g:ale_lint_on_text_changed = 'never'
 let g:airline#extensions#ale#enabled = 1
 
