@@ -10,6 +10,8 @@ kien/rainbow_parentheses.vim
 ervandew/supertab
 Keithbsmiley/swift.vim
 mkitt/tabline.vim
+Quramy/tsuquyomi
+leafgarland/typescript-vim
 vim-scripts/YankRing.vim
 vim-airline/vim-airline
 guns/vim-clojure-static
