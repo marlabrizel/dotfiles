@@ -82,14 +82,14 @@ runtime! macros/matchit.vim
 if executable('ag')
   let g:ag_prg='ag --nogroup --column'
   set grepprg=ag\ --nogroup\ --nocolor
-  let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore vendor/bundle -g ""'
+  let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore vendor/bundle --ignore node_modules -g ""'
   let g:ctrlp_use_caching = 0
 endif
 
 let g:ctrlp_by_filename=1
 let g:ctrlp_extensions=['line']
 let g:ctrlp_cache_dir=$HOME.'/.vim/tmp/ctrlp/'
-let g:ctrlp_custom_ignore='vendor/bundle\|.sass-cache\|.bundle\|tmp\|.git$'
+let g:ctrlp_custom_ignore='vendor/bundle\|.sass-cache\|.bundle\|tmp\|node_modules\|.git$'
 
 let g:netrw_liststyle=3
 
@@ -170,7 +170,7 @@ noremap <C-l> <C-w>l
 let g:ctrlp_map='<F1>'
 noremap <F2> :NERDTreeToggle<cr>
 noremap <F3> :CtrlPBuffer<cr>
-noremap <F4> :Ag! --ignore vendor/bundle<space>
+noremap <F4> :Ag! --ignore vendor/bundle --ignore node_modules<space>
 noremap <F11> :YRShow<cr>
 " <F12> is reserved for rendering markdown previews
 
