@@ -166,6 +166,7 @@ alias lf='lein figwheel'
 alias rlf='rlwrap lein figwheel'
 alias lr='lein repl'
 alias ..="cd ../"
+alias ...="cd ../../"
 alias dc='docker-compose'
 
 alias git-prune='git remote | xargs -n1 git remote prune'
