@@ -20,6 +20,9 @@ fi
 
 export EDITOR=vim
 
+# libffi
+export LDFLAGS="-L/usr/local/opt/libffi/lib"
+export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
 
 # http://ss64.com/bash/shopt.html
 shopt -s histappend
