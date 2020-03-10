@@ -103,11 +103,13 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 
 let g:ale_linters = {
 \  'javascript': ['eslint', 'flow'],
+\  'ruby': ['rubocop'],
 \  'typescript': ['tsserver', 'tslint']
 \}
 let g:ale_fixers = {
-\ 'javascript': ['prettier'],
-\ 'typescript': ['tslint']
+\  'javascript': ['prettier'],
+\  'ruby': ['rubocop'],
+\  'typescript': ['tslint']
 \}
 let g:ale_fix_on_save = 1
 let g:ale_history_log_output=0
@@ -121,6 +123,7 @@ let g:ale_lint_on_text_changed = 'never'
 let g:tsuquyomi_disable_quickfix = 1
 
 let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tabline#enabled=0
 
 let g:javascript_plugin_flow=1
 
@@ -131,7 +134,6 @@ let g:indexed_search_show_index_mappings=0
 let g:indexed_search_colors=0
 let g:coffee_compile_vert=1
 
-let g:airline#extensions#tabline#enabled=0
 
 " Rainbow Parentheses color pairs
 let g:rbpt_colorpairs = [
