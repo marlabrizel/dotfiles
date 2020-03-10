@@ -27,6 +27,7 @@ tpope/vim-haml
 henrik/vim-indexed-search
 pangloss/vim-javascript
 mxw/vim-jsx
+ngmy/vim-rubocop
 terryma/vim-multiple-cursors
 prettier/vim-prettier
 tpope/vim-rails
