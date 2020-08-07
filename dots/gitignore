@@ -12,8 +12,14 @@ tmp/**/*
 log/**/*
 tmp/*
 log/*
+.byebug_history
 .powenv
 .env
 .hgignore
 .ruby-version
 *.rdb
+debug.log
+node1/
+node2/
+node3/
+cockroach-data/
