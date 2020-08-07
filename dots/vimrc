@@ -102,7 +102,7 @@ let g:SuperTabLongestHighlight=1
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
 let g:ale_linters = {
-\  'javascript': ['eslint', 'flow'],
+\  'javascript': ['eslint'],
 \  'ruby': ['rubocop'],
 \  'typescript': ['tsserver', 'tslint']
 \}
@@ -125,7 +125,7 @@ let g:tsuquyomi_disable_quickfix = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled=0
 
-let g:javascript_plugin_flow=1
+let g:javascript_plugin_flow=0
 
 let g:yankring_window_height=10
 let g:yankring_history_dir=$HOME.'/.vim/tmp/yankring/'
