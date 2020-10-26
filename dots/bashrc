@@ -26,7 +26,7 @@ export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 # libffi
 export LDFLAGS="-L/usr/local/opt/libffi/lib"
 export CPPFLAGS="-I/usr/local/opt/libffi/include"
-export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+# export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
 
 # http://ss64.com/bash/shopt.html
 shopt -s histappend
