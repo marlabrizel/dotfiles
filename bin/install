@@ -41,12 +41,17 @@ dots() {
   done
 }
 
+#/ brew            Installs taps, packages, and casks in Brewfile
+brew() {
+  brew bundle install --file ../Brewfile
+}
 
 #/ world           Runs all of the install commands
 world() {
   bash
   dots
   vim
+  brew
 }
 
 
