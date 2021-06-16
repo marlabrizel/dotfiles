@@ -13,7 +13,7 @@ We &hearts; the Vim.
 want to back up existing files.**
 
 1. `xcode-select --install`
-- `ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"`
+- `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 - `brew install git`
 - cd to the dotfiles directory and `bin/install world`
 - Set reasonable [OSX defaults][osxdefaults]
@@ -52,24 +52,6 @@ add any customization.
 
 Included is a `polarized.terminal` color theme. Import this theme
 into Apple's Terminal.app and set it as the default.
-
-
-### Turn caps lock into the control key
-
-The control key is in an awkward position and the caps lock key is
-basically useless. It's right there in the home row, so you might as
-well put it to good use.
-
-1. Open up System Preferences
-- Select `Keyboard`
-- Select `Modifier Keys`
-- From the drop down, select `^ Control` under the `Caps Lock` setting
-- In the `Select Keyboard` drop down, set it for both internal and external keyboards
-
-### Fonts
-
-You look at text all damn day. Do yourself a favor and install the
-[MesloGM font][font] and rock the medium variant, size `12`.
 
 ### Mouse support for Terminal
 
