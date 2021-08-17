@@ -22,14 +22,6 @@ fi
 
 export EDITOR=vim
 
-# openssl
-export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-
-# libffi
-export LDFLAGS="-L/usr/local/opt/libffi/lib"
-export CPPFLAGS="-I/usr/local/opt/libffi/include"
-# export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
-
 # http://ss64.com/bash/shopt.html
 shopt -s histappend
 shopt -s nocaseglob
@@ -208,14 +200,6 @@ fi
 if [[ "$-" == *"i"* ]]; then
   echo -e "\033[0;35m------------------------------------------\033[0m"
 fi
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-# support for golang
-# export PATH=$PATH:/usr/local/go/bin
-# export GO15VENDOREXPERIMENT=1
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
 
 #aws credentials
 # function setawscreds() {
