@@ -42,5 +42,5 @@
 	clean = git media clean %f
 	smudge = git media smudge %f
 [user]
-	name = Marla Brizel Zeschin
+	name = Marla Zeschin
 	email = marlabrizel@gmail.com
