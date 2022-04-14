@@ -134,6 +134,8 @@ let g:indexed_search_show_index_mappings=0
 let g:indexed_search_colors=0
 let g:coffee_compile_vert=1
 
+let g:terraform_fmt_on_save=1
+
 
 " Rainbow Parentheses color pairs
 let g:rbpt_colorpairs = [
