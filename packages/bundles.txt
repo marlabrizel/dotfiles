@@ -35,5 +35,6 @@ tpope/vim-repeat
 vim-ruby/vim-ruby
 slim-template/vim-slim
 tpope/vim-surround
+hashivim/vim-terraform
 tpope/vim-unimpaired
 nelstrom/vim-visual-star-search
