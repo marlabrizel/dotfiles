@@ -1,7 +1,7 @@
 rking/ag.vim
 slashmili/alchemist.vim
 w0rp/ale
-kien/ctrlp.vim
+ctrlpvim/ctrlp.vim
 tysontate/HTML-AutoCloseTag
 othree/html5.vim
 mkitt/markdown-preview.vim
