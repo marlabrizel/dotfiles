@@ -1,8 +1,10 @@
 # Environment pathing and editor defaults
 eval $(/opt/homebrew/bin/brew shellenv)
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/heroku/bin:$PATH"
-export LC_ALL=C
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 export ARCHFLAGS="-arch i386 -arch x86_64"
+export EDITOR=vim
 export HISTCONTROL=ignoreboth
 export HISTFILESIZE=10000
 export HISTSIZE=10000
@@ -11,15 +13,6 @@ unset MAILCHECK
 # Add some color to man pages
 export LESS_TERMCAP_md="$(tput setaf 4)"
 
-
-# Use MacVim's version of the Vim executable instead of the systems
-if [ -e /opt/homebrew/bin/brew ]; then
-  export MACVIM_BASE=`brew --cellar macvim`
-  export MACVIM_VERSION=`brew list --versions macvim | cut -d ' ' -f 2`
-  alias vim="$MACVIM_BASE/$MACVIM_VERSION/MacVim.app/Contents/MacOS/Vim"
-fi
-
-export EDITOR=vim
 
 # http://ss64.com/bash/shopt.html
 shopt -s histappend
@@ -138,6 +131,9 @@ export HUSKY_SKIP_HOOKS=1
 
 if [ -f `brew --prefix`/etc/bash_completion ]; then
  . `brew --prefix`/etc/bash_completion
+fi
+if [ -f `brew --prefix`/etc/bash_completion.d/git-prompt.sh ]; then
+    . `brew --prefix`/etc/bash_completion.d/git-prompt.sh
 fi
 
 # ps_1 was moved so source this file instead

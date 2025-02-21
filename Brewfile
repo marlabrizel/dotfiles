@@ -43,7 +43,6 @@ brew "libssh"
 brew "libtiff"
 brew "libxml2"
 brew "m4"
-brew "macvim", args: ["HEAD"]
 brew "md5sha1sum"
 brew "memcached", restart_service: true
 brew "mkcert"
