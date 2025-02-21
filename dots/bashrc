@@ -116,7 +116,7 @@ alias rlf='rlwrap lein figwheel'
 alias lr='lein repl'
 alias ..="cd ../"
 alias ...="cd ../../"
-alias dc='docker-compose'
+alias dc='docker compose'
 alias lint='bundle exec rubocop --display-only-fail-level-offenses'
 
 alias git-prune='git remote | xargs -n1 git remote prune'
