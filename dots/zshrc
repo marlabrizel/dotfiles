@@ -1,0 +1,101 @@
+# Environment pathing and editor defaults
+eval $(/opt/homebrew/bin/brew shellenv)
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/heroku/bin:$PATH"
+export LC_ALL=C
+export ARCHFLAGS="-arch i386 -arch x86_64"
+export HISTSIZE=10000
+export SAVEHIST=10000
+export HISTFILE=~/.zsh_history
+
+# Add some color to man pages
+export LESS_TERMCAP_md="$(tput setaf 4)"
+
+# Use MacVim's version of the Vim executable instead of the systems
+if [ -e /opt/homebrew/bin/brew ]; then
+  export MACVIM_BASE=`brew --cellar macvim`
+  export MACVIM_VERSION=`brew list --versions macvim | cut -d ' ' -f 2`
+  alias vim="$MACVIM_BASE/$MACVIM_VERSION/MacVim.app/Contents/MacOS/Vim"
+fi
+
+export EDITOR=vim
+
+# zsh options
+setopt HIST_IGNORE_ALL_DUPS  # Don't record duplicates in history
+setopt HIST_SAVE_NO_DUPS     # Don't save duplicates in history
+setopt HIST_REDUCE_BLANKS    # Remove superfluous blanks
+setopt INC_APPEND_HISTORY    # Add commands as they are typed, not at shell exit
+setopt EXTENDED_HISTORY      # Save timestamp and duration
+setopt AUTO_CD               # cd by typing directory name
+setopt CORRECT               # Auto-correct commands
+setopt COMPLETE_IN_WORD      # Allow completion from within a word
+
+# Color settings
+export TERM=xterm-color
+export GREP_OPTIONS='--color=auto' GREP_COLOR='0;36'
+export CLICOLOR=1
+export LSCOLORS=excxgxfxbxdxbxbxbxexex
+
+# Prompt configuration
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats ' [%b]'
+setopt PROMPT_SUBST
+PROMPT='%F{magenta}[%m]%f %F{blue}%1~%f%F{green}$([ -n "$(rbenv version-name 2>/dev/null)" ] && echo " [$(rbenv version-name)]")%f%F{red}${vcs_info_msg_0_}%f '
+RPROMPT=''
+
+# Aliases
+# Map git commands through hub
+if [ -e /usr/local/bin/hub ]; then
+  alias git=hub
+fi
+
+# Handy stuff
+alias reload="source ~/.zshrc && cd ../ && cd -"
+alias cp='cp -i'
+alias mv='mv -i'
+alias ls='ls -G'
+alias la='ls -lA'
+alias ll='ls -l'
+alias las='ls -lAS'
+alias hi='history | tail -50'
+alias be='bundle exec'
+alias lf='lein figwheel'
+alias rlf='rlwrap lein figwheel'
+alias lr='lein repl'
+alias ..="cd ../"
+alias ...="cd ../../"
+alias dc='docker compose'
+alias lint='bundle exec rubocop --display-only-fail-level-offenses'
+alias deps="RUBYOPT='-W:deprecated'"
+
+alias git-prune='git remote | xargs -n1 git remote prune'
+alias gs='git status'
+alias gc='git commit'
+alias ga='git add'
+alias ugh='git reset --hard'
+alias gra='git remote add'
+alias gam='git commit --amend --no-edit'
+alias gcp='git cherry-pick'
+
+alias yolo='bundle exec rake db:drop db:setup'
+
+# SMAR
+export AWS_PROFILE=content-integration-dev
+alias awssso='aws sso login'
+alias ai-sandbox='export AWS_PROFILE=prod-eng-ai-sandbox ; aws sso login --profile prod-eng-ai-sandbox'
+
+# Disable precommit hooks
+export HUSKY_SKIP_INSTALL=1
+export HUSKY_SKIP_HOOKS=1
+
+# Completions
+autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'  # Case insensitive completion
+
+# Initialize rbenv and nodenv
+eval "$(rbenv init -)"
+eval "$(nodenv init -)"
+
+# Load local config if it exists
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

@@ -1,0 +1,8 @@
+# This file is sourced only for login shells
+# It's the zsh equivalent of .bash_profile
+
+# Source .zshrc for login shells to ensure consistent environment
+[[ -f ~/.zshrc ]] && source ~/.zshrc
+
+# Source local profile if it exists
+[[ -f ~/.zprofile.local ]] && source ~/.zprofile.local
