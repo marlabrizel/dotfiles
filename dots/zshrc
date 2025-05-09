@@ -11,11 +11,11 @@ export HISTFILE=~/.zsh_history
 export LESS_TERMCAP_md="$(tput setaf 4)"
 
 # Use MacVim's version of the Vim executable
-if [ -e /opt/homebrew/bin/brew ]; then
-  export MACVIM_BASE=`brew --cellar macvim`
-  export MACVIM_VERSION=`brew list --versions macvim | cut -d ' ' -f 2`
-  alias vim="$MACVIM_BASE/$MACVIM_VERSION/MacVim.app/Contents/MacOS/Vim"
-fi
+# if [ -e /opt/homebrew/bin/brew ]; then
+#   export MACVIM_BASE=`brew --cellar macvim`
+#   export MACVIM_VERSION=`brew list --versions macvim | cut -d ' ' -f 2`
+#   alias vim="$MACVIM_BASE/$MACVIM_VERSION/MacVim.app/Contents/MacOS/Vim"
+# fi
 
 export EDITOR=vim
 
