@@ -1,9 +1,12 @@
 # Environment variables that should be available to all shells
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/heroku/bin:$PATH"
-export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
-export GOPATH=~/Documents/code/go
-export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOBIN
+
+# Homebrew paths are handled by `eval $(/opt/homebrew/bin/brew shellenv)` in .zshrc
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/mysql/bin:/usr/local/heroku/bin:$PATH"
+
+# This will find the latest version in the Postgres.app
+if [ -d "/Applications/Postgres.app/Contents/Versions" ]; then
+  export PATH="$PATH:$(find /Applications/Postgres.app/Contents/Versions -maxdepth 1 -type d | sort -r | head -n1)/bin"
+fi
 
 # NVM setup
 export NVM_DIR="$HOME/.nvm"

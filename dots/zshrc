@@ -1,8 +1,8 @@
 # Environment pathing and editor defaults
 eval $(/opt/homebrew/bin/brew shellenv)
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/local/mysql/bin:/usr/local/heroku/bin:$PATH"
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/mysql/bin:/usr/local/heroku/bin:$PATH"
 export LC_ALL=C
-export ARCHFLAGS="-arch i386 -arch x86_64"
+export ARCHFLAGS="-arch arm64"
 export HISTSIZE=10000
 export SAVEHIST=10000
 export HISTFILE=~/.zsh_history
@@ -10,7 +10,7 @@ export HISTFILE=~/.zsh_history
 # Add some color to man pages
 export LESS_TERMCAP_md="$(tput setaf 4)"
 
-# Use MacVim's version of the Vim executable instead of the systems
+# Use MacVim's version of the Vim executable
 if [ -e /opt/homebrew/bin/brew ]; then
   export MACVIM_BASE=`brew --cellar macvim`
   export MACVIM_VERSION=`brew list --versions macvim | cut -d ' ' -f 2`
@@ -19,21 +19,60 @@ fi
 
 export EDITOR=vim
 
+# Key bindings - Use Vim key bindings
+bindkey -v
+
+# Reduce the delay after pressing ESC to 0.1 seconds (default is 0.4)
+export KEYTIMEOUT=10
+
+# Add some useful vim-mode indicators to the prompt
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[yellow]%} [% NORMAL]% %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}"
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+# Keep some familiar key bindings even in vim mode
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+bindkey '^[[1;5C' forward-word  # Ctrl+Right
+bindkey '^[[1;5D' backward-word # Ctrl+Left
+bindkey '^[[H' beginning-of-line # Home
+bindkey '^[[F' end-of-line # End
+bindkey '^[[3~' delete-char # Delete
+
 # zsh options
 setopt HIST_IGNORE_ALL_DUPS  # Don't record duplicates in history
 setopt HIST_SAVE_NO_DUPS     # Don't save duplicates in history
 setopt HIST_REDUCE_BLANKS    # Remove superfluous blanks
 setopt INC_APPEND_HISTORY    # Add commands as they are typed, not at shell exit
 setopt EXTENDED_HISTORY      # Save timestamp and duration
+setopt SHARE_HISTORY         # Share history between terminal sessions
 setopt AUTO_CD               # cd by typing directory name
 setopt CORRECT               # Auto-correct commands
 setopt COMPLETE_IN_WORD      # Allow completion from within a word
 
+# Directory stack configuration
+setopt AUTO_PUSHD           # Push the current directory visited onto the stack
+setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack
+setopt PUSHD_SILENT         # Do not print the directory stack after pushd or popd
+alias d='dirs -v'           # List directory stack
+
 # Color settings
-export TERM=xterm-color
-export GREP_OPTIONS='--color=auto' GREP_COLOR='0;36'
+export TERM=xterm-256color
+alias grep='grep --color=auto'
+export GREP_COLOR='0;36'
 export CLICOLOR=1
 export LSCOLORS=excxgxfxbxdxbxbxbxexex
+
+# Load colors for prompt
+autoload -U colors && colors
 
 # Prompt configuration
 autoload -Uz vcs_info
@@ -44,9 +83,11 @@ PROMPT='%F{magenta}[%m]%f %F{blue}%1~%f%F{green}$([ -n "$(rbenv version-name 2>/
 RPROMPT=''
 
 # Aliases
-# Map git commands through hub
-if [ -e /usr/local/bin/hub ]; then
-  alias git=hub
+# GitHub CLI
+if [ -e /opt/homebrew/bin/gh ]; then
+  # Add gh alias for GitHub CLI
+  alias ghpr='gh pr create'
+  alias ghrepo='gh repo view --web'
 fi
 
 # Handy stuff
@@ -88,10 +129,15 @@ alias ai-sandbox='export AWS_PROFILE=prod-eng-ai-sandbox ; aws sso login --profi
 export HUSKY_SKIP_INSTALL=1
 export HUSKY_SKIP_HOOKS=1
 
-# Completions
+# Enhanced completions
 autoload -Uz compinit && compinit
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'  # Case insensitive completion
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"    # Colored completion (like ls -G)
+zstyle ':completion:*' group-name ''                       # Group results by category
+zstyle ':completion:*:descriptions' format '%F{yellow}%B%d%b%f' # Group descriptions format
+zstyle ':completion:*:warnings' format '%F{red}No matches for: %d%f' # No matches format
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01' # Process completion
 
 # Initialize rbenv and nodenv
 eval "$(rbenv init -)"
