@@ -39,3 +39,9 @@ palette = 15=#FDF6E3
 # maximized wide-screen frame — trimmed to a saner default. Adjust to taste.)
 window-height = 55
 window-width = 200
+
+# --- Quick terminal (quake-style drop-down) ---
+# Tap option+` from ANY app to slide a terminal in from the top; tap again to hide.
+keybind = global:alt+grave_accent=toggle_quick_terminal
+quick-terminal-position = top
+quick-terminal-animation-duration = 0.15
