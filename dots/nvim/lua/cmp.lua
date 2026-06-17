@@ -1,0 +1,3 @@
+-- Completion configuration
+-- Completion plugin configuration is handled in plugins.lua
+-- This file can contain additional completion-related settings

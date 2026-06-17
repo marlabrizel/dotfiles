@@ -1,0 +1,3 @@
+-- Git configuration
+-- Git plugin configurations are handled in plugins.lua
+-- This file can contain additional git-related settings and commands
