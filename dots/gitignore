@@ -23,3 +23,5 @@ node1/
 node2/
 node3/
 cockroach-data/
+
+**/.claude/settings.local.json

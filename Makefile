@@ -1,18 +1,18 @@
 # Main targets
-.PHONY: help install update vim zsh dots world bash
+.PHONY: help install update vim nvim zsh dots world bash ghostty
 
 #/ HELP            List all make targets
 help:
 	@grep -E '^#/' Makefile | cut -c4-
 
 #/ update          Update all configurations
-update: vim-update
+update: vim-update nvim-update
 
 #/ install         Install all configurations
 install: world
 
 #/ world           Complete installation of all dotfiles
-world: dots vim zsh
+world: dots nvim zsh ghostty
 
 #/ dots            Install common dotfiles (.gemrc, .gitconfig, etc.)
 dots:
@@ -73,3 +73,31 @@ bash:
 	@for file in bash_profile bashrc inputrc; do \
 		ln -sfv $(PWD)/dots/$$file $(HOME)/.$$file; \
 	done
+
+#/ nvim            Install neovim configuration
+nvim: nvim-directories nvim-symlinks
+
+nvim-directories:
+	@echo "Creating nvim directories..."
+	@mkdir -pv $(HOME)/.config
+
+nvim-symlinks:
+	@echo "Creating nvim symlinks..."
+	@rm -rf $(HOME)/.config/nvim
+	@ln -sfv $(PWD)/dots/nvim $(HOME)/.config/nvim
+
+nvim-update:
+	@echo "Updating nvim plugins..."
+	@nvim --headless "+Lazy! sync" +qa
+
+#/ ghostty         Install ghostty configuration
+ghostty: ghostty-directories ghostty-symlinks
+
+ghostty-directories:
+	@echo "Creating ghostty directories..."
+	@mkdir -pv $(HOME)/.config
+
+ghostty-symlinks:
+	@echo "Creating ghostty symlinks..."
+	@rm -rf $(HOME)/.config/ghostty
+	@ln -sfv $(PWD)/dots/ghostty $(HOME)/.config/ghostty

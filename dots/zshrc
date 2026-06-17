@@ -10,14 +10,7 @@ export HISTFILE=~/.zsh_history
 # Add some color to man pages
 export LESS_TERMCAP_md="$(tput setaf 4)"
 
-# Use MacVim's version of the Vim executable
-# if [ -e /opt/homebrew/bin/brew ]; then
-#   export MACVIM_BASE=`brew --cellar macvim`
-#   export MACVIM_VERSION=`brew list --versions macvim | cut -d ' ' -f 2`
-#   alias vim="$MACVIM_BASE/$MACVIM_VERSION/MacVim.app/Contents/MacOS/Vim"
-# fi
-
-export EDITOR=vim
+export EDITOR=nvim
 
 # Key bindings - Use Vim key bindings
 bindkey -v
@@ -120,10 +113,34 @@ alias gcp='git cherry-pick'
 
 alias yolo='bundle exec rake db:drop db:setup'
 
-# SMAR
-export AWS_PROFILE=content-integration-dev
-alias awssso='aws sso login'
-alias ai-sandbox='export AWS_PROFILE=prod-eng-ai-sandbox ; aws sso login --profile prod-eng-ai-sandbox'
+###########
+# DevContainer Stack Aliases for medscout-api
+# Build and open devcontainer stack
+alias stack-up='devcontainer up --workspace-folder . --config .devcontainer/stack/devcontainer.json'
+# Build devcontainer without opening
+alias stack-build='devcontainer build --workspace-folder . --config .devcontainer/stack/devcontainer.json'
+# Execute commands in running stack container
+alias stack-exec='devcontainer exec --workspace-folder . --config .devcontainer/stack/devcontainer.json'
+# Open shell in stack container
+alias stack-shell='devcontainer exec --workspace-folder . --config .devcontainer/stack/devcontainer.json bash'
+# Run Django management commands in stack
+alias stack-manage='devcontainer exec --workspace-folder . --config .devcontainer/stack/devcontainer.json python
+manage.py'
+# Stop and remove stack containers
+alias stack-down='docker compose -f .devcontainer/stack/docker-compose.yml down'
+# View stack container logs
+alias stack-logs='docker compose -f .devcontainer/stack/docker-compose.yml logs -f'
+# Rebuild and restart stack
+alias stack-rebuild='docker compose -f .devcontainer/stack/docker-compose.yml down && devcontainer up --workspace-folder
+. --config .devcontainer/stack/devcontainer.json --remove-existing-container'
+# Quick access to common services
+alias stack-redis='docker compose -f .devcontainer/stack/docker-compose.yml exec redis redis-cli'
+alias stack-psql='docker compose -f .devcontainer/stack/docker-compose.yml exec postgres_db psql -U admin -d medscout'
+# Environment setup shortcuts
+alias stack-env='make env-local'
+alias stack-ecr='make ecr-login'
+alias new-prod='export AWS_PROFILE=medscout-prod'
+alias profile='aws sts get-caller-identity'
 
 # Disable precommit hooks
 export HUSKY_SKIP_INSTALL=1
@@ -139,9 +156,12 @@ zstyle ':completion:*:descriptions' format '%F{yellow}%B%d%b%f' # Group descript
 zstyle ':completion:*:warnings' format '%F{red}No matches for: %d%f' # No matches format
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01' # Process completion
 
-# Initialize rbenv and nodenv
-eval "$(rbenv init -)"
-eval "$(nodenv init -)"
-
 # Load local config if it exists
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+# NVM setup
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform

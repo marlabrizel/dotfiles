@@ -5,46 +5,70 @@ top of this. See below for an overview of the magic...
 ![ello](http://d324imu86q1bqn.cloudfront.net/uploads/user/avatar/641/large_Ello.1000x1000.png
 "ello")
 
-We &hearts; the Vim.
+We &hearts; the Neovim.
 
 
 ## Fresh install
-**Warning this will blow away any vim/bash setups you have currently. You may
+**Warning this will blow away any nvim/zsh setups you have currently. You may
 want to back up existing files.**
 
 1. `xcode-select --install`
 - `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
-- `brew install git`
-- cd to the dotfiles directory and `bin/install world`
+- `brew install git neovim`
+- cd to the dotfiles directory and `make install`
 - Set reasonable [OSX defaults][osxdefaults]
 
 
 ## Settings
 
-### Rock a sweet Bash setup
+### Neovim Configuration
 
-The Bash setup is fairly bare bones out of the box. To override or add
-any additional settings create a `~/.bashrc.local` file and add
-any customization.
+The Neovim configuration is built with modern Lua-based plugins:
 
-Within this file you should have the following environment variables
-set:
+- **Plugin Manager**: lazy.nvim
+- **LSP**: Native LSP with Mason for language server management
+- **Fuzzy Finder**: fzf-lua (replaces CtrlP)
+- **File Tree**: neo-tree (replaces NERDTree)
+- **Completion**: blink.cmp
+- **Formatting**: conform.nvim with black/isort (Python), prettier (JS/TS), rubocop (Ruby)
+- **Git Integration**: vim-fugitive, gitsigns
+- **Theme**: Polarized (custom dark theme)
 
-      export GIT_AUTHOR_NAME='Your Name'
-      export GIT_AUTHOR_EMAIL='your@email'
-      export GIT_COMMITTER_NAME='Your Name'
-      export GIT_COMMITTER_EMAIL='your@email'
-      export GITHUB_USER='Your GitHub Username'
+#### Key Bindings
 
-Since the `.gitconfig` file does not contain any user info, these are
-required to identify who you are. 
+- `F1` - Find files
+- `F2` - Toggle file tree
+- `F3` - Find buffers
+- `F4` - Grep project
+- `Space` - Leader key
+- `gd` - Go to definition (LSP)
+- `gr` - Go to references (LSP)
+- `K` - Hover documentation (LSP)
+- `<leader>rn` - Rename (LSP)
+- `<leader>ca` - Code actions (LSP)
 
-The default Bash settings support the [rbenv][rbenv] environment.
+#### Python Support
 
-### Override vim settings
+Python development includes:
+- Pyright LSP for type checking and intellisense
+- Black + isort for formatting (runs on save)
+- Virtual environment selector (`<leader>vs`)
 
-To override or add any additional settings create a `~/.vimrc.local` file and
+### Override neovim settings
+
+To override or add any additional settings create a `~/.config/nvim/init.local.lua` file and
 add any customization.
+
+### Git Configuration
+
+Since the `.gitconfig` file does not contain any user info, create a `~/.gitconfig.local`
+file with the following:
+
+      [user]
+        name = Your Name
+        email = your@email
+      [github]
+        user = Your GitHub Username
 
 ## Tips
 
@@ -53,11 +77,14 @@ add any customization.
 Included is a `polarized.terminal` color theme. Import this theme
 into Apple's Terminal.app and set it as the default.
 
-### Mouse support for Terminal
+### First-time Neovim setup
 
-To get full mouse support (scrolling, clicking, etc...) within Terminal
-Vim, install the [SIMBL][simbl] [MouseTerm][mouseterm] plug-in. It brings the
-goodness.
+After running `make install`, the first time you open Neovim it will:
+1. Automatically install lazy.nvim plugin manager
+2. Install all configured plugins
+3. Set up LSP servers via Mason
+
+This may take a minute or two on first launch.
 
 <!-- Markdown links -->
 [font]: https://github.com/andreberg/Meslo-Font
