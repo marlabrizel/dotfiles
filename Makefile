@@ -1,5 +1,5 @@
 # Main targets
-.PHONY: help install update vim nvim zsh dots world bash ghostty
+.PHONY: help install update vim nvim zsh dots world bash ghostty claude
 
 #/ HELP            List all make targets
 help:
@@ -12,7 +12,7 @@ update: vim-update nvim-update
 install: world
 
 #/ world           Complete installation of all dotfiles
-world: dots nvim zsh ghostty
+world: dots nvim zsh ghostty claude
 
 #/ dots            Install common dotfiles (.gemrc, .gitconfig, etc.)
 dots:
@@ -101,3 +101,17 @@ ghostty-symlinks:
 	@echo "Creating ghostty symlinks..."
 	@rm -rf $(HOME)/.config/ghostty
 	@ln -sfv $(PWD)/dots/ghostty $(HOME)/.config/ghostty
+
+#/ claude          Install Claude Code configuration
+claude: claude-directories claude-symlinks
+
+claude-directories:
+	@echo "Creating claude directories..."
+	@mkdir -pv $(HOME)/.claude
+	@mkdir -pv $(HOME)/.config
+
+claude-symlinks:
+	@echo "Creating claude symlinks..."
+	@ln -sfv $(PWD)/dots/claude/settings.json $(HOME)/.claude/settings.json
+	@rm -rf $(HOME)/.config/ccstatusline
+	@ln -sfv $(PWD)/dots/ccstatusline $(HOME)/.config/ccstatusline

@@ -59,6 +59,24 @@ Python development includes:
 To override or add any additional settings create a `~/.config/nvim/init.local.lua` file and
 add any customization.
 
+### Claude Code Configuration
+
+`make claude` symlinks the portable bits of the Claude Code setup:
+
+- `dots/claude/settings.json` → `~/.claude/settings.json` (vim editor mode, always-on
+  thinking, fullscreen TUI, voice, statusline command)
+- `dots/ccstatusline` → `~/.config/ccstatusline` (statusline layout: model, context %,
+  git branch, git changes)
+
+The rest of `~/.claude` is machine state — session history, transcripts, caches, plugin
+install paths — so it's symlinked file by file rather than as a whole directory.
+
+### Override Claude settings
+
+Machine- or project-specific settings belong in `~/.claude/settings.local.json` (never
+symlinked, so it stays on the machine) or a project's `.claude/settings.local.json`
+(gitignored). Claude merges both over the checked-in `settings.json`.
+
 ### Git Configuration
 
 Since the `.gitconfig` file does not contain any user info, create a `~/.gitconfig.local`
